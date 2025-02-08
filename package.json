@@ -1,0 +1,55 @@
+{
+  "name": "workey",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "",
+  "author": "oiij",
+  "license": "MIT",
+  "homepage": "https://github.com/oiij/workey",
+  "keywords": [
+    "@oiij/workey",
+    "workey",
+    "oiij",
+    "web worker inline"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsc --noEmit && tsup",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest",
+    "cz": "czg",
+    "commit": "git pull && git add -A && pnpm cz && git push"
+
+  },
+  "peerDependencies": {
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.1.1",
+    "@oiij/tsconfig": "^0.0.1",
+    "cz-git": "^1.11.0",
+    "czg": "^1.11.0",
+    "eslint": "^9.19.0",
+    "eslint-plugin-format": "^1.0.1",
+    "lint-staged": "^15.4.3",
+    "simple-git-hooks": "^2.11.1",
+    "tsup": "^8.3.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
