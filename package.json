@@ -24,7 +24,10 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "LICENSE",
+    "README.md",
+    "dist",
+    "package.json"
   ],
   "scripts": {
     "dev": "tsup --watch",
@@ -33,7 +36,8 @@
     "lint:fix": "eslint . --fix",
     "test": "vitest",
     "cz": "czg",
-    "commit": "git pull && git add -A && pnpm cz && git push"
+    "commit": "git pull && git add -A && pnpm cz && git push",
+    "release": "bumpp -r && npm publish --access public"
 
   },
   "peerDependencies": {
@@ -41,6 +45,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^4.1.1",
     "@oiij/tsconfig": "^0.0.1",
+    "bumpp": "^10.0.2",
     "cz-git": "^1.11.0",
     "czg": "^1.11.0",
     "eslint": "^9.19.0",
