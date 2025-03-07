@@ -1,18 +1,18 @@
 {
-  "name": "ts-starter",
+  "name": "workey",
   "type": "module",
   "version": "0.0.1",
   "description": "",
   "author": "oiij",
   "license": "MIT",
-  "homepage": "https://github.com/oiij/ts-starter",
+  "homepage": "https://github.com/oiij/workey",
   "repository": {
     "type": "git",
-    "url": "git@github.com:oiij/ts-starter.git"
+    "url": "git@github.com:oiij/workey.git"
   },
-  "bugs": "https://github.com/oiij/ts-starter/issues",
+  "bugs": "https://github.com/oiij/workey/issues",
   "keywords": [
-    "ts-starter"
+    "workey"
   ],
   "sideEffects": false,
   "exports": {
@@ -20,6 +20,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "import": "./dist/node.js",
+      "require": "./dist/node.cjs"
     }
   },
   "main": "./dist/index.js",
@@ -49,8 +54,7 @@
     "cz": "czg",
     "commit": "git pull && git add -A && pnpm cz && git push",
     "link": "pnpm link --global",
-    "preinstall": "npx only-allow pnpm",
-    "postinstall": "npx simple-git-hooks"
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.2.0",

@@ -1,26 +1,45 @@
-# library-starter
+# workey
 
-Features:
+这个库可以将 WebWorker 代码在同一文件内运行 不需要引入WebWorker文件
 
-- Bundle with [tsup](https://github.com/egoist/tsup)
-- Test with [vitest](https://vitest.dev)
-
-# Usage
-
-### 本地包测试
-
-当前目录下执行：
+## 安装
 
 ```bash
-pnpm link --global --dir=./
+pnpm add workey
 ```
 
-目标目录：
+## 使用
 
-```bash
-pnpm link --global <package name>
+```ts
+import { createWorker } from 'workey'
+function add(a: number, b: number) {
+  return a + b
+}
+const { callWorker: worker } = createWorker((foo: string) => {
+  const arr = Array.from({ length: 1000000 }, (_, i) => i)
+  return {
+    arr: arr.reduce((pre, cur) => add(pre, cur), 0),
+    foo,
+    dayjs: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+  }
+}, {
+  dependencies: ['https://cdn.jsdelivr.net/npm/dayjs/dayjs.min.js'],
+  localDependencies: [add],
+})
+worker('foo').then((res) => {
+  console.log(res)
+}).catch((err) => {
+  console.log(err)
+})
 ```
 
-## License
+## 配置
 
-MIT
+```ts
+interface WorkerOptions {
+  dependencies?: string[]
+  // eslint-disable-next-line ts/no-unsafe-function-type
+  localDependencies?: Function[]
+  timeout?: number
+}
+```

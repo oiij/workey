@@ -4,7 +4,7 @@ export default defineConfig({
   entry: ['./src/index.ts'],
   clean: true,
   format: ['cjs', 'esm'],
-  external: ['vue'],
+  external: ['worker_threads'],
   dts: true,
-  minify: true,
+  minify: false,
 })
